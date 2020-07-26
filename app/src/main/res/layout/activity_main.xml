@@ -10,8 +10,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="12dp"
-        android:layout_marginRight="12dp" >
+        android:layout_marginRight="12dp">
 
         <com.example.chartview.BarChartView
             android:id="@+id/barview"
@@ -20,8 +21,15 @@
             android:visibility="gone"/>
 
         <com.example.chartview.LineChartView
+            android:id="@+id/lineview"
             android:layout_width="match_parent"
-            android:layout_height="250dp" />
+            android:layout_height="250dp"
+            android:visibility="gone"/>
+
+        <com.example.chartview.PieChartView
+            android:id="@+id/pieview"
+            android:layout_width="300dp"
+            android:layout_height="300dp"/>
     </RelativeLayout>
 
     <LinearLayout
