@@ -5,4 +5,8 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="textcolor">#191F25</color>
     <color name="linecolor">#E0E0E0</color>
+    <color name="green">#9900BC1B</color>
+    <color name="blue">#9912B7F5</color>
+    <color name="yellow">#99FF9F00</color>
+    <color name="red">#99f1144a</color>
 </resources>
