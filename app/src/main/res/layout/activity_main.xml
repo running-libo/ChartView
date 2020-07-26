@@ -19,7 +19,7 @@
             android:layout_height="250dp"
             android:visibility="gone"/>
 
-        <LinearLayout
+        <com.example.chartview.LineChartView
             android:layout_width="match_parent"
             android:layout_height="250dp" />
     </RelativeLayout>

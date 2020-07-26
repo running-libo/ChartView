@@ -28,7 +28,7 @@ public class BarChartView extends View {
     private int[] unitHeightNum = new int[] {100, 200, 300, 400, 500};
     /** 各个阶段数据数组 */
     private int[] stageNum = new int[] {125, 230, 323, 253, 398, 410};
-    private String[] stageStr = new String[] {"一月", "二月", "三月", "四月", "五月", "六月"};
+    private String[] stageStr = new String[] {"Jan", "Feb", "Mar", "Apr", "May", "Jun"};
     private int[] colors = new int[] {R.color.green, R.color.blue, R.color.yellow, R.color.red};
     /** X轴单元宽度 */
     private float unitWidth;
