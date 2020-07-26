@@ -6,11 +6,48 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.example.chartview.BarChartView
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
         android:layout_marginLeft="12dp"
-        android:layout_marginRight="12dp"
-        android:layout_marginTop="100dp"/>
+        android:layout_marginRight="12dp" >
+
+        <com.example.chartview.BarChartView
+            android:id="@+id/barview"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="250dp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="100dp">
+
+        <Button
+            android:id="@+id/btn_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="柱状图"/>
+
+        <Button
+            android:id="@+id/btn_line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="折线图"/>
+
+        <Button
+            android:id="@+id/btn_pie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="饼状图"/>
+    </LinearLayout>
 
 </RelativeLayout>

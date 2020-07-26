@@ -5,9 +5,9 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 import androidx.annotation.Nullable;
-
 import java.util.ArrayList;
 
 /**
@@ -38,6 +38,8 @@ public class BarChartView extends View {
     private int rectPadding = 12;
     /** 每个柱子集合 */
     private ArrayList<Bar> bars = new ArrayList<>();
+    /** 当前显示值的位置 */
+    private int showValuePos = -1;
 
     public BarChartView(Context context) {
         super(context);
@@ -107,7 +109,7 @@ public class BarChartView extends View {
 
             float top = getHeight() - (float)stageNum[i]/100*unitHeight;
             int color = getResources().getColor(colors[i%colors.length]);
-            bar = new Bar(left+rectPadding, top, left+unitWidth-rectPadding, getHeight()- 80, color);
+            bar = new Bar(stageNum[i], left+rectPadding, top, left+unitWidth-rectPadding, getHeight()- 80, color);
             bars.add(bar);
             left += unitWidth;
         }
@@ -124,20 +126,46 @@ public class BarChartView extends View {
             Bar bar = bars.get(i);
             rectPaint.setColor(bar.color);
             canvas.drawRect(bar.left, bar.top, bars.get(i).right, bar.bootom, rectPaint);
+
+            //绘制柱形上数值
+            if (showValuePos == i) {
+                String value = String.valueOf(bar.value);
+                Rect rect = new Rect();
+                textPaint.getTextBounds(value, 0, value.length(), rect);
+                float textLeft = bar.left + (bar.right-bar.left-rect.width())/2;  //计算使文字在柱形居中位置
+                canvas.drawText(value, textLeft, bar.top-20, textPaint);  //绘制柱顶部数值
+            }
         }
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            for (int i=0;i<bars.size();i++) {
+                if (event.getX() > bars.get(i).left && event.getX() < bars.get(i).right) {
+                    //按下事件在当前柱形内
+                    showValuePos = i;
+                    invalidate();
+                }
+            }
+        }
+
+        return true;
     }
 
     /**
      * 柱形类
      */
     class Bar {
+        private int value;
         private float left;
         private float top;
         private float right;
         private float bootom;
         private int color;
 
-        public Bar(float left, float top, float right, float bootom, int color) {
+        public Bar(int value, float left, float top, float right, float bootom, int color) {
+            this.value = value;
             this.left = left;
             this.top = top;
             this.right = right;
