@@ -80,11 +80,13 @@ public class LineChartView extends View {
         int top = getHeight() - 80;  //给底部文字留下高度
         unitHeight = getHeight()/unitHeightNum.length - 20;
 
+        Rect rect = new Rect();
+        String longText = unitHeightNum[unitHeightNum.length-1]+"万";  //以最长文字对齐
+        textPaint.getTextBounds(longText, 0, longText.length(), rect);
+
         for (int num : unitHeightNum) {
-            Rect rect = new Rect();
-            String text = num + "万";
-            textPaint.getTextBounds(text, 0, text.length(), rect);
-            canvas.drawText(text, 0, top, textPaint);  //画文字
+
+            canvas.drawText(num + "万", 0, top, textPaint);  //画文字
 
             lineLeftPadding = rect.width() + 20;
             canvas.drawLine(lineLeftPadding, top, getWidth(), top, linePaint);  //画横线
@@ -124,6 +126,7 @@ public class LineChartView extends View {
                 linePath.lineTo(topX, topY);
             }
 
+            charLinePaint.setStyle(Paint.Style.FILL);
             canvas.drawCircle(topX, topY, 10, charLinePaint);  //绘制拐点小圆
 
             left += unitWidth;

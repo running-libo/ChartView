@@ -17,8 +17,7 @@
         <com.example.chartview.BarChartView
             android:id="@+id/barview"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:visibility="gone"/>
+            android:layout_height="250dp"/>
 
         <com.example.chartview.LineChartView
             android:id="@+id/lineview"
@@ -29,7 +28,8 @@
         <com.example.chartview.PieChartView
             android:id="@+id/pieview"
             android:layout_width="300dp"
-            android:layout_height="300dp"/>
+            android:layout_height="300dp"
+            android:visibility="gone"/>
     </RelativeLayout>
 
     <LinearLayout
